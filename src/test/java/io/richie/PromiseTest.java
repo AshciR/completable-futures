@@ -50,6 +50,8 @@ class PromiseTest{
         // Then the output stream should have the value printed by the promise
         assertEquals("Hello World: Promise Finished\n", outputStream.toString());
 
+        // Clean up
+        System.setOut(System.out);
     }
 
 }
