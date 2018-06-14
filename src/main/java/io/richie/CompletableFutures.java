@@ -2,10 +2,14 @@ package io.richie;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CompletableFutures{
+class CompletableFutures{
 
-    public CompletableFuture<String> helloPromise(){
+    CompletableFuture<String> helloPromise(){
         return CompletableFuture.supplyAsync(() -> "Hello");
     }
 
+    CompletableFuture<String> processPromise(String addendum){
+        return CompletableFuture.supplyAsync(() -> "Hello ")
+                                .thenApply(it -> it + addendum);
+    }
 }
