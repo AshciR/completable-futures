@@ -25,7 +25,7 @@ class PromiseTest{
     void shouldGetPromise() throws ExecutionException, InterruptedException{
 
         CompletableFuture<String> actual = promise.helloPromise();
-        assertEquals("Hello", actual.get());
+        assertEquals("Hello ", actual.get());
         assertNotEquals("Hello World", actual.get());
     }
 
@@ -52,6 +52,16 @@ class PromiseTest{
 
         // Clean up
         System.setOut(System.out);
+    }
+
+    @Test
+    void shouldCombinePromise() throws ExecutionException, InterruptedException{
+
+        String promiseString = "Composed World";
+
+        CompletableFuture<String> combinedPromise = promise.combinePromise(promiseString);
+        assertEquals("Hello " + promiseString, combinedPromise.get());
+
     }
 
 }
